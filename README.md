@@ -2,7 +2,7 @@
 
 RAFC (Representation-Adaptive Feature Combination) is a lightweight module
 for adapting frozen wireless foundation models to downstream tasks. This
-repository supports two backbones, LWM1.1 and ContraWiMAE, on three tasks:
+repository supports two backbones, [LWM1.1](https://huggingface.co/wi-lab/lwm-v1.1) and [ContraWiMAE](https://github.com/BerkIGuler/WirelessContrastiveMaskedLearning), on three tasks:
 channel estimation, channel prediction, and 64-codeword beam prediction.
 
 ## Citation
@@ -10,12 +10,6 @@ channel estimation, channel prediction, and 64-codeword beam prediction.
 arXiv: [2606.10277](https://arxiv.org/abs/2606.10277)
 
 First-author contact: [yuxuanshi22@gmail.com](mailto:yuxuanshi22@gmail.com)
-
-## Related literature
-
-- [Large Wireless Model (LWM): A Foundation Model for Wireless Channels](https://arxiv.org/abs/2411.08872)
-- [A Multi-Task Foundation Model for Wireless Channel Representation Using Contrastive and Masked Autoencoder Learning (ContraWiMAE)](https://arxiv.org/abs/2505.09160)
-- [DeepMIMO: A Generic Deep Learning Dataset for Millimeter Wave and Massive MIMO Applications](https://arxiv.org/abs/1902.06435)
 
 ## How RAFC works
 
@@ -92,7 +86,7 @@ weights/pretrained/lwm1_1.pth
 
 ## 2. Generate the DeepMIMO datasets
 
-The repository does not upload raw DeepMIMO scenarios or generated CSI. It
+The repository does not upload raw [DeepMIMO scenarios](https://arxiv.org/abs/1902.06435) or generated CSI. It
 contains the scenario download code, fixed receiver indices, physical channel
 configuration, 64-codeword label generator, and train/validation/test split
 logic required by the three tasks.
