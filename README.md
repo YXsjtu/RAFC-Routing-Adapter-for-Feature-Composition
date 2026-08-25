@@ -11,6 +11,12 @@ arXiv: [2606.10277](https://arxiv.org/abs/2606.10277)
 
 First-author contact: [yuxuanshi22@gmail.com](mailto:yuxuanshi22@gmail.com)
 
+## Related literature
+
+- [Large Wireless Model (LWM): A Foundation Model for Wireless Channels](https://arxiv.org/abs/2411.08872)
+- [A Multi-Task Foundation Model for Wireless Channel Representation Using Contrastive and Masked Autoencoder Learning (ContraWiMAE)](https://arxiv.org/abs/2505.09160)
+- [DeepMIMO: A Generic Deep Learning Dataset for Millimeter Wave and Massive MIMO Applications](https://arxiv.org/abs/1902.06435)
+
 ## How RAFC works
 
 A frozen backbone produces token representations at encoder layers 0, 5, and
