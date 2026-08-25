@@ -1,0 +1,25 @@
+task: channel_prediction
+local_only: true
+data:
+  root: .
+  manifest: data_cache/channel_prediction_fixed_144sc/manifest.json
+  input_shape: [4, 4, 144, 14]
+  target_shape: [4, 4, 144, 14]
+  samples: 12000
+  split_seed: 2026
+  split: {train: 0.70, validation: 0.15, test: 0.15}
+inference:
+  test_snrs_db: [0, 5, 10, 15, 20, 25, 30]
+  pilot_comb: 4
+  pilot_symbols: [0, 11]
+  metric: nmse_db
+backbones:
+  lwm1_1: weights/pretrained/lwm1_1.pth
+  contrawimae: weights/pretrained/contrawimae.pt
+checkpoints:
+  lwm1_1:
+    baseline: weights/downstream/lwm1_1/channel_prediction/baseline.pt
+    rafc: weights/downstream/lwm1_1/channel_prediction/rafc.pt
+  contrawimae:
+    baseline: weights/downstream/contrawimae/channel_prediction/baseline.pt
+    rafc: weights/downstream/contrawimae/channel_prediction/rafc.pt

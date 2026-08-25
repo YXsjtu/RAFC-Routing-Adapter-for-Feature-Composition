@@ -1,0 +1,93 @@
+{
+  "schema_version": 2,
+  "snapshot_notice": "Channel-prediction files are interim best.pt snapshots frozen on 2026-08-25T12:39:58+08:00 while training was still active.",
+  "pretrained": {
+    "contrawimae": {
+      "status": "released",
+      "path": "pretrained/contrawimae.pt",
+      "bytes": 7128730,
+      "sha256": "5791ce9e231893cf5259efbbcedc708fd01f0ebccc6cdae6d52398f8fab18277",
+      "license": "MIT"
+    },
+    "lwm1_1": {
+      "status": "local_only_not_for_upload",
+      "path": "pretrained/lwm1_1.pth",
+      "bytes": 29220202,
+      "sha256": "ef601f137d496e64f93f0236de5c47fa8f720528425735bcea712a98dc7e2426",
+      "reason": "Local inference dependency. Delete before upload; upstream does not declare redistribution rights."
+    }
+  },
+  "downstream": {
+    "contrawimae": {
+      "channel_estimation": {
+        "status": "released",
+        "path": "downstream/contrawimae/channel_estimation/rafc.pt",
+        "baseline_path": "downstream/contrawimae/channel_estimation/baseline.pt",
+        "bytes": 6438323,
+        "sha256": "f9c240321d670cc390f2222e897dc3ab6dcedf2f32181ae2b532d22821c26777",
+        "baseline_bytes": 6424383,
+        "baseline_sha256": "73d022a0a0cacd6a0b4ac3e9055852aa8833586ed7b0f65cfd00c43cbd6ff5f4",
+        "seed": 2026,
+        "input_shape": [4, 4, 72, 14],
+        "source": "runs/channel_estimation_contrawimae_rafc_seed2026_val7avg_full1000 (RAFC); runs/channel_ce_cp_lwm_contra_14snap_5seed_val7avg_1000ep_p30 (baseline)"
+      },
+      "channel_prediction": {
+        "status": "interim_training_snapshot",
+        "path": "downstream/contrawimae/channel_prediction/rafc.pt",
+        "baseline_path": "downstream/contrawimae/channel_prediction/baseline.pt",
+        "bytes": 6438323,
+        "sha256": "bdf241f48d4ace5c80158160a7d4eeef4d9f39549d9b1d1c168a40a10de2a2a5",
+        "baseline_bytes": 6424383,
+        "baseline_sha256": "717e3010169e9a3538207d147807edc1ca2f8799905fb4c45f0bab01b3860d20",
+        "seed": 2026,
+        "input_shape": [4, 4, 144, 14]
+      },
+      "beam_prediction": {
+        "status": "released",
+        "path": "downstream/contrawimae/beam_prediction/rafc.pt",
+        "baseline_path": "downstream/contrawimae/beam_prediction/baseline.pt",
+        "bytes": 7800850,
+        "sha256": "27eec1767c4ce3f2e28018ea6acda0d68527b785d94a097d4ec2249f8ddb4ec0",
+        "baseline_bytes": 7785660,
+        "baseline_sha256": "6926345f42b440f8677232b1234a31e96b10481630f6109ef0a46d9d4a400d99",
+        "seed": 2026,
+        "classes": 64
+      }
+    },
+    "lwm1_1": {
+      "channel_estimation": {
+        "status": "released",
+        "path": "downstream/lwm1_1/channel_estimation/rafc.pt",
+        "baseline_path": "downstream/lwm1_1/channel_estimation/baseline.pt",
+        "bytes": 7623219,
+        "sha256": "bf70cd18ba840e4c063097e7006b1324d01fff4c35cc88b8a2bea785781d3dff",
+        "baseline_bytes": 7572159,
+        "baseline_sha256": "e09dd4a03e23505a51048004179578c33e45fc43aa202c4cc36d38495e4285d9",
+        "seed": 2026,
+        "input_shape": [4, 4, 72, 14]
+      },
+      "channel_prediction": {
+        "status": "interim_training_snapshot",
+        "path": "downstream/lwm1_1/channel_prediction/rafc.pt",
+        "baseline_path": "downstream/lwm1_1/channel_prediction/baseline.pt",
+        "bytes": 7623219,
+        "sha256": "3083be391d1eb71026abc807371302916f7ce8a557732e165db06afd91c8e663",
+        "baseline_bytes": 7572159,
+        "baseline_sha256": "2bc875ec167b1bc59a2f7aa169c9ebf58f5d6589c7f16f482a3967397be9fa9e",
+        "seed": 2026,
+        "input_shape": [4, 4, 144, 14]
+      },
+      "beam_prediction": {
+        "status": "released",
+        "path": "downstream/lwm1_1/beam_prediction/rafc.pt",
+        "baseline_path": "downstream/lwm1_1/beam_prediction/baseline.pt",
+        "bytes": 15261414,
+        "sha256": "57826c3d0d202051b79fbc59fa82c24b893a06555359879a503f8397e831b826",
+        "baseline_bytes": 15209128,
+        "baseline_sha256": "3f81c3232f9efd73297415cf81f783cf28c7db915b9430c90addbebec7c1a353",
+        "seed": 2026,
+        "classes": 64
+      }
+    }
+  }
+}

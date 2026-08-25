@@ -1,0 +1,16 @@
+{
+  "description": "Ordered DeepMIMO receiver indices used by the released downstream datasets; these are selection metadata, not CSI.",
+  "samples_per_base_station": 2000,
+  "sha256": {
+    "city_5_philadelphia_3p5_0_idx.npy": "60bc6421a59d54c4b6af9cb38571b70a1dc98f4bedd8ef9e2ab7b36490c4703e",
+    "city_5_philadelphia_3p5_1_idx.npy": "17eeae84c29edc2b74d3d15a8d8bd26aefd21b4f0bc81943b7a158e2a5d8a134",
+    "city_5_philadelphia_3p5_2_idx.npy": "7a9c15e606002bb11383ccb9307b36660d6617bddbe1471708ac49383a0c38ef",
+    "city_8_dallas_3p5_0_idx.npy": "513b24f8de96448eaaaa5c2ee52c6506add5c5dc218a3a925572509e0b802222",
+    "city_8_dallas_3p5_1_idx.npy": "1fb6c1b7a40d244082a974d50279fd7138e44eb184fc4f12305f3859b8a46e4b",
+    "city_8_dallas_3p5_2_idx.npy": "902a8d761e7d60c631bd8f43b7ebb3faf72445bf9f573840e66329d0dad65f76",
+    "city_9_sanfrancisco_3p5_0_idx.npy": "3a6833d75f0896b18cfaf08b484eeaa304eb697895e57daea49a22e311e9aa25",
+    "city_9_sanfrancisco_3p5_1_idx.npy": "0f4c45b2d7491e026246c5b3591687d5f35310d37b2af259e07d691098b4aaad",
+    "city_9_sanfrancisco_3p5_2_idx.npy": "7bebabc7b3f175ee86bcbe720ccd9e43472b7ab99b183962bb5a78d4f694cc76"
+  }
+}
+

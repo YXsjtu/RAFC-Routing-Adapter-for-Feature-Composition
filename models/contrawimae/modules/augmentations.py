@@ -1,0 +1,93 @@
+"""
+Data augmentation functions for wireless channel data.
+
+This module provides channel-specific augmentations for complex channel matrices,
+including SNR-based noise injection, frequency shift, and phase rotation.
+"""
+
+import torch
+import math
+
+
+def apply_channel_augmentations(
+    x, noise_prob=1, freq_shift_prob=0.0, phase_rot_prob=0.0, **kwargs
+):
+    """
+    Apply channel-specific augmentations to complex channel matrices.
+
+    Args:
+        x: Complex tensor of shape (B, M, N) where:
+           B: batch size
+           M, N: channel matrix dimensions
+        noise_prob: Probability of applying noise injection
+        freq_shift_prob: Probability of applying frequency shift
+        phase_rot_prob: Probability of applying phase rotation
+        **kwargs: Additional arguments including snr_min and snr_max for noise injection
+
+    Returns:
+        Augmented complex tensor of same shape as input
+    """
+
+    x_aug = x.clone()
+    batch_size = x.shape[0]
+
+    if noise_prob > 0:
+
+        if "snr_min" not in kwargs:
+            raise ValueError("snr_min must be provided in kwargs when noise_prob > 0")
+        if "snr_max" not in kwargs:
+            raise ValueError("snr_max must be provided in kwargs when noise_prob > 0")
+
+        snr_db_min = kwargs["snr_min"]
+        snr_db_max = kwargs["snr_max"]
+
+        noise_mask = (torch.rand(batch_size) < noise_prob).to(x.device)
+
+        if noise_mask.any():
+
+            target_snr_db = snr_db_min + torch.rand(batch_size, 1, 1).to(x.device) * (
+                snr_db_max - snr_db_min
+            )
+
+            target_snr_linear = 10 ** (target_snr_db / 10)
+
+            noise_power = 1.0 / target_snr_linear
+
+            noise_std = torch.sqrt(noise_power / 2)
+            noise_real = (
+                torch.randn(batch_size, x.shape[1], x.shape[2]).to(x.device) * noise_std
+            )
+            noise_imag = (
+                torch.randn(batch_size, x.shape[1], x.shape[2]).to(x.device) * noise_std
+            )
+            noise = torch.complex(noise_real, noise_imag)
+
+            mask_expanded = noise_mask.view(batch_size, 1, 1)
+
+            x_aug = x + noise * mask_expanded
+
+    if freq_shift_prob > 0:
+        shift_mask = (torch.rand(batch_size) < freq_shift_prob).to(x.device)
+        if shift_mask.any():
+            delta = torch.randint(1, max(1, x.shape[2] // 10), (batch_size,)).to(
+                x.device
+            )
+            for i in range(batch_size):
+                if shift_mask[i]:
+
+                    x_aug[i] = torch.roll(x_aug[i], shifts=delta[i].item(), dims=1)
+
+    if phase_rot_prob > 0:
+        phase_mask = (torch.rand(batch_size) < phase_rot_prob).to(x.device)
+        if phase_mask.any():
+            theta = 2 * math.pi * torch.rand(batch_size, 1, 1).to(x.device)
+
+            cos_theta = torch.cos(theta)
+            sin_theta = torch.sin(theta)
+            rotation_factor = torch.complex(cos_theta, sin_theta)
+
+            for i in range(batch_size):
+                if phase_mask[i]:
+                    x_aug[i] = x_aug[i] * rotation_factor[i]
+
+    return x_aug

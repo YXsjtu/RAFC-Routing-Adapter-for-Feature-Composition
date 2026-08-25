@@ -1,0 +1,24 @@
+task: channel_estimation
+local_only: true
+data:
+  root: .
+  manifest: data_cache/channel_estimation_unseen_city9_72sc/manifest.json
+  input_shape: [4, 4, 72, 14]
+  samples: 6000
+  split_seed: 2026
+  split: {train: 0.70, validation: 0.15, test: 0.15}
+inference:
+  test_snrs_db: [0, 5, 10, 15, 20, 25, 30]
+  pilot_comb: 4
+  pilot_symbols: [0, 11]
+  metric: nmse_db
+backbones:
+  lwm1_1: weights/pretrained/lwm1_1.pth
+  contrawimae: weights/pretrained/contrawimae.pt
+checkpoints:
+  lwm1_1:
+    baseline: weights/downstream/lwm1_1/channel_estimation/baseline.pt
+    rafc: weights/downstream/lwm1_1/channel_estimation/rafc.pt
+  contrawimae:
+    baseline: weights/downstream/contrawimae/channel_estimation/baseline.pt
+    rafc: weights/downstream/contrawimae/channel_estimation/rafc.pt

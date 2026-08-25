@@ -1,0 +1,21 @@
+# Physical-profile distribution used to render the two beam-prediction cities.
+seed: 42
+carrier_hz: 3.5e9
+subcarriers: 72
+subcarrier_spacing_hz: 30000.0
+symbols_per_sample: 14
+array_profiles:
+  - {name: ula4_ula4, probability: 0.60, bs_shape: [4, 1], ue_shape: [4, 1], spacing_lambda: 0.5}
+  - {name: upa2_ula4, probability: 0.20, bs_shape: [2, 2], ue_shape: [4, 1], spacing_lambda: 0.5}
+  - {name: upa2_upa2, probability: 0.20, bs_shape: [2, 2], ue_shape: [2, 2], spacing_lambda: 0.5}
+path_count_distribution: {10: 0.20, 15: 0.30, 25: 0.50}
+mobility_profiles:
+  - {name: pedestrian, probability: 0.35, speed_mps: [0.0, 2.0]}
+  - {name: urban, probability: 0.40, speed_mps: [2.0, 15.0]}
+  - {name: vehicular, probability: 0.25, speed_mps: [15.0, 35.0]}
+orientation:
+  bs_yaw_rule: face_rx_centroid
+  bs_yaw_jitter_deg: [-15.0, 15.0]
+  ue_yaw_deg: [0.0, 360.0]
+  ue_pitch_deg: [-10.0, 10.0]
+

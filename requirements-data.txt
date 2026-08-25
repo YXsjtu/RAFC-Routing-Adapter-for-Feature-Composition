@@ -1,0 +1,7 @@
+# DeepMIMO revision used by the released data recipe.
+deepmimo @ git+https://github.com/DeepMIMO/DeepMIMO.git@fb7584bc90bf9f2bf693107a67821c42bde71e08
+numpy==2.0.1
+PyYAML==6.0.2
+scipy>=1.13,<2
+tqdm>=4.66,<5
+

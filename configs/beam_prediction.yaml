@@ -1,0 +1,26 @@
+task: beam_prediction
+local_only: true
+data:
+  root: .
+  manifest: data_cache/beam_prediction_64codebook_3p5ghz_72sc/manifest.json
+  input_shape: [4, 4, 72, 14]
+  samples: 12000
+  split_seed: 2026
+  split: {train: 0.70, validation: 0.15, test: 0.15}
+inference:
+  codebook_size: 64
+  carrier_hz: 3500000000
+  test_snrs_db: [0, 5, 10, 15, 20, 25, 30]
+  pilot_comb: 4
+  ofdm_symbol: 0
+  metrics: [top1_accuracy, macro_f1, weighted_f1, cross_entropy]
+backbones:
+  lwm1_1: weights/pretrained/lwm1_1.pth
+  contrawimae: weights/pretrained/contrawimae.pt
+checkpoints:
+  lwm1_1:
+    baseline: weights/downstream/lwm1_1/beam_prediction/baseline.pt
+    rafc: weights/downstream/lwm1_1/beam_prediction/rafc.pt
+  contrawimae:
+    baseline: weights/downstream/contrawimae/beam_prediction/baseline.pt
+    rafc: weights/downstream/contrawimae/beam_prediction/rafc.pt
