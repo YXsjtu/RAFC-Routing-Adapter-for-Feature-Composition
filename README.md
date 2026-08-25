@@ -86,8 +86,7 @@ weights/pretrained/lwm1_1.pth
 
 ## 2. Generate the DeepMIMO datasets
 
-The repository does not upload raw [DeepMIMO scenarios](https://arxiv.org/abs/1902.06435) or generated CSI. It
-contains the scenario download code, fixed receiver indices, physical channel
+The repository contains the [DeepMIMO scenarios](https://arxiv.org/abs/1902.06435) download code, fixed receiver indices, physical channel
 configuration, 64-codeword label generator, and train/validation/test split
 logic required by the three tasks.
 
@@ -285,12 +284,6 @@ best checkpoint by validation NMSE; beam training selects it by mean validation
 macro-F1 across the configured SNRs. Each run writes `best.pt`, `last.pt`, and
 `results.json` under `runs/`.
 
-## LWM1.1 license notice
-
-The public LWM1.1 repository does not currently provide an explicit software or
-checkpoint license. Therefore, the official LWM1.1 pretrained checkpoint is not
-redistributed here. Users must obtain it from the upstream authors and confirm
-that their intended use is permitted. See `THIRD_PARTY_NOTICES.md` for details.
 
 ## License
 
